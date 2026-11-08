@@ -17,3 +17,16 @@ export const getCreatorsFrom = (shows, country) =>
 shows.filter(show => show.creator.country === country).map(show => show.creator.name);
 
 export const sortByStartYear = shows => [...shows].sort((a, b) => a.startYear - b.startYear);
+//C
+export const renameSeries = (shows, id, newTitle) =>
+shows.map(show => show.id === id ? { ...show, title: newTitle } : show);
+
+export const addSeason = (shows, id, season) =>
+shows.map(show => show.id === id ? { ...show, seasons: [...show.seasons, season] } : show);
+
+export const addEpisode = (shows, id, seasonNumber, episode) =>
+shows.map(show =>show.id === id
+? {
+...show,seasons: show.seasons.map(season =>season.number === seasonNumber? { ...season, episodes: [...season.episodes, episode] }: season),}: show);
+
+
